@@ -17,13 +17,13 @@ endif
 if !isdirectory(VIM.'colors')
   echo "Installing Theme..."
   echo ""
-  execute "curl -fLo ~/.vim/colors/vim-monokai-tasty.vim --create-dirs https://raw.githubusercontent.com/patstockwell/vim-monokai-tasty/master/colors/vim-monokai-tasty.vim"
+  execute "curl -fLo ~/.vim/colors/one.vim --create-dirs https://raw.githubusercontent.com/rakr/vim-one/master/colors/one.vim"
 endif
 
 if !isdirectory(VIM.'autoload/airline')
   echo "Installing Airline Theme..."
   echo ""
-  execute "curl -fLo ~/.vim/autoload/airline/themes/monokai_tasty.vim --create-dirs https://raw.githubusercontent.com/patstockwell/vim-monokai-tasty/master/autoload/airline/themes/monokai_tasty.vim"
+  execute "curl -fLo ~/.vim/autoload/airline/themes/one.vim --create-dirs https://raw.githubusercontent.com/rakr/vim-one/master/autoload/airline/themes/one.vim"
 endif
 
 let plugins_directory=VIM.'plugged'
@@ -66,6 +66,13 @@ filetype plugin indent on
 
 " Settings
 "---------------------------
+
+"> Files navigation
+let g:netrw_banner = 0
+let g:netrw_browse_split = 0
+let g:netrw_altv = 1
+let g:netrw_sort_sequence = '[\/]$,*' " sort
+map <C-w> :tabp<cr>
 
 "> Status line
 set statusline=%F%m%r%h%w%=(%{&ff}/%Y)\ (line\ %l\/%L,\ col\ %c)\
@@ -120,7 +127,6 @@ endif
 let g:ycm_add_preview_to_completeopt = 0
 let g:ycm_min_num_of_chars_for_completion = 2
 let g:ycm_min_num_identifier_candidate_chars = 4
-let g:ycm_confirm_extra_conf=0
 let g:ycm_enable_diagnostic_highlighting = 0
 
 "> snippets
@@ -146,10 +152,10 @@ if !exists('g:syntax_on')
 endif
 set t_Co=256
 set cursorline
-set background=dark
-set termguicolors
-" colorscheme vim-monokai-tasty
-" let g:airline_theme='monokai_tasty'
+set background=light        " for the light version
+" let g:one_allow_italics = 1 " italic in comments
+colorscheme one
+let g:airline_theme='one'
 
 "  Main settings
 "---------------------------
