@@ -7,7 +7,7 @@ Hi all! This is my second version of config for Vim. With time I made my own vim
 ![Vim image](https://raw.githubusercontent.com/PinkyRabbit/my-js-vim-cfg-v2/master/vim-demo.png "Vim image")
 
 How to use:
-1. install `Vim` and `cmake` if you didn't.
+1. install `Vim`, `perl` and `cmake` if you didn't.
 2. move to your home directory:
 ```
 cd ~
