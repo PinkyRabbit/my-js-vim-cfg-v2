@@ -1,36 +1,64 @@
 if !executable('curl')
-  echoerr "You have to install curl or first install vim-plug yourself!"
-  execute 'q!'
+    echoerr "You have to install curl!"
+    execute 'q!'
 endif
 
-let VIM=$HOME.'/.vim/'
+let VIM_DIR=expand('~/.vim/')
 
- " Install plug-vim
+" Install plug-vim
 "---------------------------
-if !filereadable(VIM.'autoload/plug.vim')
-  echo "Installing Vim-Plug..."
-  echo ""
-  execute 'curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-  let g:not_finish_vimplug='yes'
+if !filereadable(VIM_DIR.'/autoload/plug.vim')
+    echo "Installing Vim-Plug..."
+    echo ""
+    execute '!curl -fLo ~/.vim/autoload/plug.vim https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+    let g:not_finish_vimplug='yes'
 endif
 
-if !isdirectory(VIM.'colors')
-  echo "Installing Theme..."
-  echo ""
-  execute "curl -fLo ~/.vim/colors/one.vim --create-dirs https://raw.githubusercontent.com/rakr/vim-one/master/colors/one.vim"
-endif
-
-if !isdirectory(VIM.'autoload/airline')
-  echo "Installing Airline Theme..."
-  echo ""
-  execute "curl -fLo ~/.vim/autoload/airline/themes/one.vim --create-dirs https://raw.githubusercontent.com/rakr/vim-one/master/autoload/airline/themes/one.vim"
-endif
-
-let plugins_directory=VIM.'plugged'
-
+let plugins_directory = VIM_DIR.'plugins'
 if !isdirectory(plugins_directory)
-  autocmd VimEnter * PlugInstall
+    echo "Installing plugins for vim..."
+    echo "--> Please wait untill all plugins will be installed and type ':q' + ENTER"
+    echo ""
+    autocmd VimEnter * PlugInstall
 endif
+
+" Install themes
+"---------------------------
+if !isdirectory(VIM_DIR.'/colors')
+    " https://github.com/rakr/vim-one
+    echo "Installing light theme..."
+    execute "!curl -fLo ~/.vim/colors/one.vim --create-dirs https://raw.githubusercontent.com/rakr/vim-one/master/colors/one.vim"
+    execute "!curl -fLo ~/.vim/autoload/airline/themes/one.vim --create-dirs https://raw.githubusercontent.com/rakr/vim-one/master/autoload/airline/themes/one.vim"
+
+    " https://github.com/crusoexia/vim-dracula
+    echo "Installing dark theme..."
+    execute "!curl -fLo ~/.vim/colors/dracula.vim --create-dirs https://raw.githubusercontent.com/crusoexia/vim-dracula/master/colors/dracula.vim"
+
+    " https://github.com/herrbischoff/cobalt2.vim
+    echo "Installing blue theme..."
+    execute "!curl -fLo ~/.vim/colors/cobalt2.vim --create-dirs https://raw.githubusercontent.com/herrbischoff/cobalt2.vim/master/colors/cobalt2.vim"
+endif
+
+" Set colors
+syntax on
+if !exists('g:syntax_on')
+    syntax enable
+endif
+set t_Co=256
+set cursorline
+
+"> Light theme
+" let g:one_allow_italics = 1
+" set background=light
+" colorscheme one
+" let g:airline_theme='one'
+
+"> Dark theme
+let g:dracula_italic = 1
+colorscheme dracula
+
+"> Blue theme
+" colorscheme cobalt2
 
 "> Javascript
 " Plug 'honza/vim-snippets' " html C etc...
@@ -44,21 +72,21 @@ endif
 
 " Required:
 call plug#begin(plugins_directory)
-Plug 'sheerun/vim-polyglot' "  language SYNTAX packs
-Plug 'posva/vim-vue' " Vue supporting
-Plug 'Valloric/YouCompleteMe'
-Plug 'w0rp/ale' " Syntax linter
-Plug 'Chiel92/vim-autoformat' " spaces/braces etc. (ESlint/gofmt)
-Plug 'Raimondi/delimitMate' " auto-completion for quotes, parens, brackets, etc
-Plug 'Valloric/MatchTagAlways' " highlight enclosing tags
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'tpope/vim-fugitive' " Git wrapper
-Plug 'airblade/vim-gitgutter' " Git diff
-Plug 'mattn/gist-vim'
+    Plug 'vim-airline/vim-airline'
+    Plug 'vim-airline/vim-airline-themes'
+    Plug 'SirVer/ultisnips'
+" Plug 'posva/vim-vue' " Vue supporting
+" Plug 'sheerun/vim-polyglot' "  language SYNTAX packs
+" Plug 'Valloric/YouCompleteMe'
+" Plug 'w0rp/ale' " Syntax linter
+" Plug 'Chiel92/vim-autoformat' " spaces/braces etc. (ESlint/gofmt)
+" Plug 'Raimondi/delimitMate' " auto-completion for quotes, parens, brackets, etc
+" Plug 'Valloric/MatchTagAlways' " highlight enclosing tags
+" Plug 'tpope/vim-fugitive' " Git wrapper
+" Plug 'airblade/vim-gitgutter' " Git diff
+" Plug 'mattn/gist-vim'
 
 " Ultisnips better be last plugin
-Plug 'SirVer/ultisnips'
 call plug#end()
 
 " Required:
@@ -68,11 +96,11 @@ filetype plugin indent on
 "---------------------------
 
 "> Files navigation
-let g:netrw_banner = 0
-let g:netrw_browse_split = 0
-let g:netrw_altv = 1
-let g:netrw_sort_sequence = '[\/]$,*' " sort
-map <C-w> :tabp<cr>
+" let g:netrw_banner = 0
+" let g:netrw_browse_split = 0
+" let g:netrw_altv = 1
+" let g:netrw_sort_sequence = '[\/]$,*' " sort
+" map <C-w> :tabp<cr>
 
 "> Status line
 set statusline=%F%m%r%h%w%=(%{&ff}/%Y)\ (line\ %l\/%L,\ col\ %c)\
@@ -137,33 +165,21 @@ let g:UltiSnipsExpandTrigger='<tab>'
 let g:UltiSnipsJumpForwardTrigger='<c-b>'
 let g:UltiSnipsJumpBackwardTrigger='<c-z>'
 let g:UltiSnipsEditSplit='vertical'
- 
-"> Git Gist
-let g:gist_post_private = 0
-let g:gist_post_anonymous = 0
-let g:gist_detect_filetype = 1
-let g:gist_open_browser_after_post = 0
 
-" Set colors
-"---------------------------
-syntax on
-if !exists('g:syntax_on')
-    syntax enable
-endif
-set t_Co=256
-set cursorline
-set background=light        " for the light version
-" let g:one_allow_italics = 1 " italic in comments
-colorscheme one
-let g:airline_theme='one'
+"> Git Gist
+" let g:gist_post_private = 0
+" let g:gist_post_anonymous = 0
+" let g:gist_detect_filetype = 1
+" let g:gist_open_browser_after_post = 0
 
 "  Main settings
 "---------------------------
 set guifont=Menlo\ Regular:h14 " font
 set number " line numbers
+set relativenumber " to display relative line numbers
 set hidden " shows files that starts from .
 set autoread " reload file if the file changes on the disk
-set history=100 " history of commands
+set history=50 " history of commands
 set wrap " enables visual wrapping + NEXT line
 set textwidth=0 wrapmargin=0 " remove automatic insertion of newlines
 set tabstop=2 " show existing tab with 2 spaces width
@@ -181,4 +197,7 @@ set title " let vim set the terminal title
 " Append tabs configs
 "----------------------------------------------
 source $HOME/.vim/.tabs
+
+" Linters
+"----------------------------------------------
 

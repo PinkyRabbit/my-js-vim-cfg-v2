@@ -1,2 +1,5 @@
-plugged/
+plugins/
+colors/
+autoload/airline
+autoload/plug.vim
 .netrwhist
