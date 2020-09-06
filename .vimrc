@@ -27,16 +27,18 @@ endif
 if !isdirectory(VIM_DIR.'/colors')
     " https://github.com/rakr/vim-one
     echo "Installing light theme..."
-    execute "!curl -fLo ~/.vim/colors/one.vim --create-dirs https://raw.githubusercontent.com/rakr/vim-one/master/colors/one.vim"
-    execute "!curl -fLo ~/.vim/autoload/airline/themes/one.vim --create-dirs https://raw.githubusercontent.com/rakr/vim-one/master/autoload/airline/themes/one.vim"
+    execute '!curl -fLo ~/.vim/colors/one.vim --create-dirs https://raw.githubusercontent.com/rakr/vim-one/master/colors/one.vim'
+    execute '!curl -fLo ~/.vim/autoload/airline/themes/one.vim --create-dirs https://raw.githubusercontent.com/rakr/vim-one/master/autoload/airline/themes/one.vim'
 
     " https://github.com/crusoexia/vim-dracula
     echo "Installing dark theme..."
-    execute "!curl -fLo ~/.vim/colors/dracula.vim --create-dirs https://raw.githubusercontent.com/crusoexia/vim-dracula/master/colors/dracula.vim"
+    execute '!curl -fLo ~/.vim/colors/dracula.vim --create-dirs https://raw.githubusercontent.com/crusoexia/vim-dracula/master/colors/dracula.vim'
 
-    " https://github.com/herrbischoff/cobalt2.vim
     echo "Installing blue theme..."
-    execute "!curl -fLo ~/.vim/colors/cobalt2.vim --create-dirs https://raw.githubusercontent.com/herrbischoff/cobalt2.vim/master/colors/cobalt2.vim"
+"   https://github.com/herrbischoff/cobalt2.vim
+"   execute '!curl -fLo ~/.vim/colors/cobalt2.vim --create-dirs https://raw.githubusercontent.com/herrbischoff/cobalt2.vim/master/colors/cobalt2.vim'
+"   https://github.com/GertjanReynaert/cobalt2-vim-theme
+    execute '!curl -fLo ~/.vim/colors/cobalt2.vim --create-dirs https://raw.githubusercontent.com/GertjanReynaert/cobalt2-vim-theme/master/colors/cobalt2.vim'
 endif
 
 " Set colors
@@ -54,11 +56,11 @@ set cursorline
 " let g:airline_theme='one'
 
 "> Dark theme
-let g:dracula_italic = 1
-colorscheme dracula
+" let g:dracula_italic = 1
+" colorscheme dracula
 
 "> Blue theme
-" colorscheme cobalt2
+colorscheme cobalt2
 
 "> Javascript
 " Plug 'honza/vim-snippets' " html C etc...
@@ -74,14 +76,14 @@ colorscheme dracula
 call plug#begin(plugins_directory)
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
-    Plug 'SirVer/ultisnips'
-" Plug 'posva/vim-vue' " Vue supporting
+" Plug 'SirVer/ultisnips'
+    Plug 'Chiel92/vim-autoformat' " spaces/braces etc. (ESlint/gofmt)
+    Plug 'Raimondi/delimitMate' " auto-completion for quotes, parens, brackets, etc
+    Plug 'Valloric/MatchTagAlways' " highlight enclosing tags
+    Plug 'posva/vim-vue' " Vue supporting
 " Plug 'sheerun/vim-polyglot' "  language SYNTAX packs
 " Plug 'Valloric/YouCompleteMe'
 " Plug 'w0rp/ale' " Syntax linter
-" Plug 'Chiel92/vim-autoformat' " spaces/braces etc. (ESlint/gofmt)
-" Plug 'Raimondi/delimitMate' " auto-completion for quotes, parens, brackets, etc
-" Plug 'Valloric/MatchTagAlways' " highlight enclosing tags
 " Plug 'tpope/vim-fugitive' " Git wrapper
 " Plug 'airblade/vim-gitgutter' " Git diff
 " Plug 'mattn/gist-vim'
@@ -158,9 +160,9 @@ let g:ycm_min_num_identifier_candidate_chars = 4
 let g:ycm_enable_diagnostic_highlighting = 0
 
 "> snippets
-let g:UltiSnipsUsePythonVersion = 3
-let g:UltiSnipsSnippetsDir = "~/.vim/UltiSnips"
-let g:ycm_key_list_select_completion = ['<c-j>', '<Down>']
+let g:UltiSnipsUsePythonVersion=2
+let g:UltiSnipsSnippetsDir=VIM_DIR.'UltiSnips'
+let g:ycm_key_list_select_completion=['<c-j>', '<Down>']
 let g:UltiSnipsExpandTrigger='<tab>'
 let g:UltiSnipsJumpForwardTrigger='<c-b>'
 let g:UltiSnipsJumpBackwardTrigger='<c-z>'
@@ -174,7 +176,6 @@ let g:UltiSnipsEditSplit='vertical'
 
 "  Main settings
 "---------------------------
-set guifont=Menlo\ Regular:h14 " font
 set number " line numbers
 set relativenumber " to display relative line numbers
 set hidden " shows files that starts from .

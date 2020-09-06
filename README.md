@@ -53,16 +53,20 @@ cd plugged/YouCompleteMe
 ./install.py --js-completer
 ```
 
+## Font
+
+To edit font and font size you should set up it inside Konsole settings
+
 ## Now you are ready.
 
 Note: There is snippets usage mechanism implemented. So go to directory UltiSnips. There is an example of snippet for VueJS.
 
 Note: this config was tested on Linux only. Usually I use Manjaro or Fedora. Really, I don't know how people works on Ubuntu 18+, so, if you installed it - prepare to bugs.
 
-## Let the force be with you, bro!
-
 ## Themes
 
 * White [Vim-one](https://github.com/rakr/vim-one)
 * Dark [Dracula](https://github.com/crusoexia/vim-dracula)
-* Blue [Cobalt2](https://github.com/herrbischoff/cobalt2.vim)
+* Blue [Cobalt2](https://github.com/GertjanReynaert/cobalt2-vim-theme)
+
+## Let the force be with you, bro!
