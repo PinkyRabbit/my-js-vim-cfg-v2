@@ -79,7 +79,7 @@ call plug#begin(plugins_directory)
 " Plug 'SirVer/ultisnips'
     Plug 'Chiel92/vim-autoformat' " spaces/braces etc. (ESlint/gofmt)
     Plug 'Raimondi/delimitMate' " auto-completion for quotes, parens, brackets, etc
-    Plug 'Valloric/MatchTagAlways' " highlight enclosing tags
+    Plug 'alvan/vim-closetag' " close html tag, press >
     Plug 'posva/vim-vue' " Vue supporting
 " Plug 'sheerun/vim-polyglot' "  language SYNTAX packs
 " Plug 'Valloric/YouCompleteMe'
@@ -195,10 +195,10 @@ set shell=/bin/bash " Open bash
 set updatetime=100 " redraw the status bar often
 set title " let vim set the terminal title
 
-" Append tabs configs
-"----------------------------------------------
-source $HOME/.vim/.tabs
 
 " Linters
 "----------------------------------------------
 
+" plugins settings in files:
+source $HOME/.vim/settings/.close-tags " close html tags settings
+source $HOME/.vim/settings/.tabs " tabs size
