@@ -79,4 +79,4 @@ To edit font and font size you should set up it inside Konsole settings
 
 ## Let the force be with you, bro!
 
-Note: this config was tested on Linux only. Usually I use Manjaro or Fedora. Really, I don't know how people works on Ubuntu 18+, so, if you installed it - prepare to bugs.
+Note: config was tested on Manjaro 18 Linux only.
