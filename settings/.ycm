@@ -1,6 +1,14 @@
 "> YouCompleteMe settings
 
-" set completeopt-=preview " Don't show YCM's preview window
+let g:ycm_key_list_select_completion = ['<tab>', '<c-j>']
+
+" https://github.com/ycm-core/YouCompleteMe#the-gycm_autoclose_preview_window_after_completion-option
+let g:ycm_auto_hover = ''
+
+" :help completeopt and :help previewpopup and :help completepopup
+" set completeopt-=preview
+" let g:ycm_add_preview_to_completeopt = 0 " pair to setcompleteoption minus preview
+set completeopt+=popup
 
 let g:ycm_enable_diagnostic_highlighting = 0
 let g:ycm_enable_diagnostic_signs = 0
