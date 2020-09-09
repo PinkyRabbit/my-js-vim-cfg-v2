@@ -1,47 +1,14 @@
+let VIM_DIR=expand('~/.vim/')
+
 if !executable('curl')
     echoerr "You have to install curl!"
     execute 'q!'
 endif
 
-let VIM_DIR=expand('~/.vim/')
+source $HOME/.vim/.install.vim " call autoinstall
 
-" Install plug-vim
+" Set colors and theme
 "---------------------------
-if !filereadable(VIM_DIR.'/autoload/plug.vim')
-    echo "Installing Vim-Plug..."
-    echo ""
-    execute '!curl -fLo ~/.vim/autoload/plug.vim https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-    let g:not_finish_vimplug='yes'
-endif
-
-let plugins_directory = VIM_DIR.'plugins'
-if !isdirectory(plugins_directory)
-    echo "Installing plugins for vim..."
-    echo "--> Please wait untill all plugins will be installed and type ':q' + ENTER"
-    echo ""
-    autocmd VimEnter * PlugInstall
-endif
-
-" Install themes
-"---------------------------
-if !isdirectory(VIM_DIR.'/colors')
-    " https://github.com/rakr/vim-one
-    echo "Installing light theme..."
-    execute '!curl -fLo ~/.vim/colors/one.vim --create-dirs https://raw.githubusercontent.com/rakr/vim-one/master/colors/one.vim'
-    execute '!curl -fLo ~/.vim/autoload/airline/themes/one.vim --create-dirs https://raw.githubusercontent.com/rakr/vim-one/master/autoload/airline/themes/one.vim'
-
-    " https://github.com/crusoexia/vim-dracula
-    echo "Installing dark theme..."
-    execute '!curl -fLo ~/.vim/colors/dracula.vim --create-dirs https://raw.githubusercontent.com/crusoexia/vim-dracula/master/colors/dracula.vim'
-
-    echo "Installing blue theme..."
-"   https://github.com/herrbischoff/cobalt2.vim
-"   execute '!curl -fLo ~/.vim/colors/cobalt2.vim --create-dirs https://raw.githubusercontent.com/herrbischoff/cobalt2.vim/master/colors/cobalt2.vim'
-"   https://github.com/GertjanReynaert/cobalt2-vim-theme
-    execute '!curl -fLo ~/.vim/colors/cobalt2.vim --create-dirs https://raw.githubusercontent.com/GertjanReynaert/cobalt2-vim-theme/master/colors/cobalt2.vim'
-endif
-
-" Set colors
 syntax on
 if !exists('g:syntax_on')
     syntax enable
@@ -62,17 +29,8 @@ set cursorline
 "> Blue theme
 colorscheme cobalt2
 
-"> Javascript
-" Plug 'honza/vim-snippets' " html C etc...
-" Plug 'epilande/vim-es2015-snippets' " es6
-" Plug 'epilande/vim-react-snippets' " react
-" Plug 'alexbyk/vim-ultisnips-js-testing' " mocha/jasmine
-"> Python
-" Plug 'zchee/deoplete-jedi', " https://github.com/zchee/deoplete-jedi
-" Plug 'jmcantrell/vim-virtualenv', " https://github.com/jmcantrell/vim-virtualenv
-" Plug 'ehamberg/vim-cute-python', " use unicode characters for several built-in functions and operators
-
-" Required:
+" Enabled plugins
+"---------------------------
 call plug#begin(plugins_directory)
     Plug 'Chiel92/vim-autoformat' " spaces/braces etc. (ESlint/gofmt)
 "   Plug 'Raimondi/delimitMate' " auto-completion for quotes, parens, brackets, etc
@@ -82,6 +40,10 @@ call plug#begin(plugins_directory)
 " Plug 'tpope/vim-fugitive' " Git wrapper
 " Plug 'airblade/vim-gitgutter' " Git diff
 " Plug 'mattn/gist-vim'
+" Plug 'honza/vim-snippets' " html C etc...
+" Plug 'epilande/vim-es2015-snippets' " es6
+" Plug 'epilande/vim-react-snippets' " react
+" Plug 'alexbyk/vim-ultisnips-js-testing' " mocha/jasmine
 
 " javascript plugins
     Plug 'galooshi/vim-import-js' " JS imports autocomplation
@@ -95,9 +57,7 @@ call plug#begin(plugins_directory)
 " Ultisnips better be last plugin
 " Plug 'SirVer/ultisnips'
 call plug#end()
-
-" Required:
-filetype plugin indent on
+filetype plugin indent on " Required!
 
 "> snippets
 let g:UltiSnipsUsePythonVersion=2
@@ -113,8 +73,8 @@ let g:UltiSnipsEditSplit='vertical'
 " let g:gist_post_anonymous = 0
 " let g:gist_detect_filetype = 1
 " let g:gist_open_browser_after_post = 0
-
 "  Main settings
+
 "---------------------------
 set number " line numbers
 set relativenumber " to display relative line numbers
@@ -139,19 +99,22 @@ set title " let vim set the terminal title
 set backupdir=$HOME/.vim/backup
 set directory=$HOME/.vim/swap
 
-"> Files navigation
-" let g:netrw_banner = 0
-" let g:netrw_browse_split = 0
-" let g:netrw_altv = 1
-" let g:netrw_sort_sequence = '[\/]$,*' " sort
-" map <C-w> :tabp<cr>
-
 "> additional syntax
 autocmd BufEnter,BufRead *.vue set filetype=vue.javascript " VueJS supporting
+j
 
-" plugins settings in files:
-source $HOME/.vim/settings/.airline " airline + linter ale
-source $HOME/.vim/settings/.linting " eslint
-source $HOME/.vim/settings/.close-tags " close html tags settings
-source $HOME/.vim/settings/.tabs " tabs size
-source $HOME/.vim/settings/.ycm " autocomplete for js
+" Files navigation
+"---------------------------
+let g:netrw_banner = 0
+let g:netrw_browse_split = 0
+let g:netrw_altv = 1
+let g:netrw_sort_sequence = '[\/]$,*' " sort
+map <C-w> :tabp<cr>
+
+" Plugins settings in files
+"---------------------------
+source $HOME/.vim/settings/.airline.vim " airline + linter ale
+source $HOME/.vim/settings/.linting.vim " eslint
+source $HOME/.vim/settings/.close-tags.vim " close html tags settings
+source $HOME/.vim/settings/.tabs.vim " tabs size
+source $HOME/.vim/settings/.ycm.vim " autocomplete for js

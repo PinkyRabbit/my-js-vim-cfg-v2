@@ -3,3 +3,6 @@ colors/
 autoload/airline
 autoload/plug.vim
 .netrwhist
+swap/*
+backup/*
+

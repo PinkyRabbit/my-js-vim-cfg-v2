@@ -1,0 +1,37 @@
+{
+    "ecmaVersion": 6,
+    "loadEagerly": [
+       "**/*.js"
+     ],
+    "dontLoad": [
+        "**/node_modules/**/*.js",
+        "**/*.min.js",
+        "**/build/*.js",
+        "**/dist/*.js"
+    ],
+    "libs": [
+      "_comment": "https://github.com/ternjs/tern/tree/master/defs",
+      "browser",
+      "chai",
+      "ecmascript",
+      "jquery",
+      "react",
+      "underscore"
+    ],
+    "plugins": {
+      "_comment": "https://github.com/ternjs/tern/tree/master/plugin",
+      "angular": {},
+      "commonjs": {},
+      "complete_strings": {},
+      "doc_comment": {
+        "fullDocs": true,
+        "strong": true
+      },
+      "es_modules": {},
+      "modules": {},
+      "node": {},
+      "node_resolve": {},
+      "requirejs": {},
+      "webpack": {}
+    }
+}
