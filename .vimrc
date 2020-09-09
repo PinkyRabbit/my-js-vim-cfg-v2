@@ -75,11 +75,10 @@ colorscheme cobalt2
 " Required:
 call plug#begin(plugins_directory)
     Plug 'Chiel92/vim-autoformat' " spaces/braces etc. (ESlint/gofmt)
-    Plug 'Raimondi/delimitMate' " auto-completion for quotes, parens, brackets, etc
+"   Plug 'Raimondi/delimitMate' " auto-completion for quotes, parens, brackets, etc
     Plug 'alvan/vim-closetag' " close html tag, press >
+    Plug 'Valloric/YouCompleteMe' " multilanguage autocomplete
 " Plug 'sheerun/vim-polyglot' "  language SYNTAX packs
-" Plug 'Valloric/YouCompleteMe'
-" Plug 'w0rp/ale' " Syntax linter
 " Plug 'tpope/vim-fugitive' " Git wrapper
 " Plug 'airblade/vim-gitgutter' " Git diff
 " Plug 'mattn/gist-vim'
@@ -87,7 +86,6 @@ call plug#begin(plugins_directory)
 " javascript plugins
     Plug 'galooshi/vim-import-js' " JS imports autocomplation
     Plug 'posva/vim-vue' " Vue supporting
-
 
 " airline + linter
     Plug 'vim-airline/vim-airline'
@@ -100,29 +98,6 @@ call plug#end()
 
 " Required:
 filetype plugin indent on
-
-" Settings
-"---------------------------
-
-"> Files navigation
-" let g:netrw_banner = 0
-" let g:netrw_browse_split = 0
-" let g:netrw_altv = 1
-" let g:netrw_sort_sequence = '[\/]$,*' " sort
-" map <C-w> :tabp<cr>
-
-"> MatchTagAlways
-let g:mta_filetypes = { 'html' : 1,  'javascript.jsx' : 1 }
-
-"> add syntax
-autocmd BufEnter,BufRead *.vue set filetype=vue.javascript " VueJS supporting
-
-"> YouCompleteMe
-" set completeopt-=preview " Don't show YCM's preview window
-let g:ycm_add_preview_to_completeopt = 0
-let g:ycm_min_num_of_chars_for_completion = 2
-let g:ycm_min_num_identifier_candidate_chars = 4
-let g:ycm_enable_diagnostic_highlighting = 0
 
 "> snippets
 let g:UltiSnipsUsePythonVersion=2
@@ -160,8 +135,23 @@ set shell=/bin/bash " Open bash
 set updatetime=100 " redraw the status bar often
 set title " let vim set the terminal title
 
+"put .swp and ~ files under ~/.vim
+set backupdir=$HOME/.vim/backup
+set directory=$HOME/.vim/swap
+
+"> Files navigation
+" let g:netrw_banner = 0
+" let g:netrw_browse_split = 0
+" let g:netrw_altv = 1
+" let g:netrw_sort_sequence = '[\/]$,*' " sort
+" map <C-w> :tabp<cr>
+
+"> additional syntax
+autocmd BufEnter,BufRead *.vue set filetype=vue.javascript " VueJS supporting
+
 " plugins settings in files:
 source $HOME/.vim/settings/.airline " airline + linter ale
 source $HOME/.vim/settings/.linting " eslint
 source $HOME/.vim/settings/.close-tags " close html tags settings
 source $HOME/.vim/settings/.tabs " tabs size
+source $HOME/.vim/settings/.ycm " autocomplete for js

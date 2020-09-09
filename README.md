@@ -61,11 +61,19 @@ Please read Ale documentation [here](https://github.com/dense-analysis/ale).
 
 To edit linters setting please edit `/settings/.linting`
 
+## Autocompletion with YCM
+
+
+
 ## Snippets
 
 There was implemented snippets usage mechanism. Snippets let you code more faster. So go to directory UltiSnips. There is an example of snippet for VueJS.
 
 Please read UltiSnips plugin documentation [here](https://github.com/SirVer/ultisnips). 
+
+## Temporary files
+
+As you know, when we edit files, Vim create a temporary copy of the file with `.swap` extension. To prevent of saving such files in the project director I create two directories under `.vim` named as `swap` and `backup`. SO. If you looking for `.swap` file - you should look here.
 
 ## Font
 
