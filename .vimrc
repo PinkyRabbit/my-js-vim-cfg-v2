@@ -35,6 +35,7 @@ call plug#begin(plugins_directory)
     Plug 'Chiel92/vim-autoformat' " spaces/braces etc. (ESlint/gofmt)
     Plug 'alvan/vim-closetag' " close html tag, press >
     Plug 'Valloric/YouCompleteMe' " multilanguage autocomplete
+    Plug 'inkarkat/vim-ingo-library' " needed for Marks plugin
     Plug 'inkarkat/vim-mark' " classic plugin for Marks multicoloring
     Plug 'mattn/gist-vim' " plugin for gist
 " Plug 'sheerun/vim-polyglot' "  language SYNTAX packs

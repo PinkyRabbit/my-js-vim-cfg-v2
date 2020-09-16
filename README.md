@@ -76,6 +76,10 @@ Also we can extract presaved configs same way.
 * `:Gist -c u1y4o34o234134` - open gist
 * `:Gist -d` delete current opened gist
 
+## Marks
+
+For more fast navigation though file I use Mark plugin. It's totally easy to use it `\m` to mark any item and next you can search by mark number. You can read a plugin documentation [here](https://github.com/inkarkat/vim-mark)
+
 ## Temporary files
 
 As you know, when we edit files, Vim create a temporary copy of the file with `.swap` extension. To prevent of saving such files in the project director I create two directories under `.vim` named as `swap` and `backup`. SO. If you looking for `.swap` file - you should look here.
