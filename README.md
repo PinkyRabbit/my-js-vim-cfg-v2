@@ -6,51 +6,35 @@ Hi all! This is my second version of config for Vim. With time I made my own vim
 
 ![Vim image](https://raw.githubusercontent.com/PinkyRabbit/my-js-vim-cfg-v2/master/vim-demo.png "Vim image")
 
-How to use:
+## Requirements
 
-0. Vim version 8.2
-1. install `Vim`, `perl` and `cmake` if you didn't.
-2. move to your home directory:
+* Vim version 8.2
+* Install `Vim`, `perl` and `cmake` if you didn't.
+
+## Installation:
+
+1. move to your home directory:
 
 ```
 cd ~
 ```
 
-3. clone this repo
+2. clone this repo
 
 ```
 git clone THIS/REPO.git .vim
 ```
 
-4. create configs symlink
+3. create configs symlink
 
 ```
 sudo ln -s ~/.vim/.vimrc .vimrc
 ```
 
-5. move to vim directory
+5. open config and wait untill plugins installation ends
 
 ```
-cd .vim
-```
-
-6. open config and wait untill plugins installation ends
-
-```
-vim .vimrc
-```
-
-7. close vim (`:q`)
-8. move to YCM folder
-
-```
-cd plugged/YouCompleteMe
-```
-
-9. install [YouCompleteMe](https://github.com/ycm-core/YouCompleteMe)
-
-```
-./install.py --js-completer
+vim ~/.vim/.vimrc
 ```
 
 ## Linting
@@ -63,7 +47,17 @@ To edit linters setting please edit `/settings/.linting`
 
 ## Autocompletion with YCM
 
+If you will talk about autocompletion anywhere, all knows about YouCompleteMe. It supports most of programmig languages, have clever settings. So, if you still don't hear about it - you will love it.
 
+Install it in two steps:
+1. `cd ~/.vim/plugins/YouCompleteMe`
+2. `./install.py --js-completer`
+
+After plugin was installed you should know about `.tern-project` files. To use YCM inside your project you should:
+1. Use default tern config that already saved when you firstly run `.vimrc` from my config (it will binds to your projects automatically)
+2. Create own `.tern-project` file and put it inside project root directory (don't forget to add it to `.gitignore`)
+
+Full documentation about tern settings you can [find here](https://ternjs.net/doc/manual.html).
 
 ## Snippets
 
@@ -77,10 +71,10 @@ When we use snippets - all cool. But sometimes we need to share code with some o
 
 Also we can extract presaved configs same way.
 
-:Gist -s comment - publish gist
-:Gist -l - get gists list
-:Gist -c u1y4o34o234134 - open gist
-:Gist -d delete current opened gist
+* `:Gist -s comment` - publish gist
+* `:Gist -l` - get gists list
+* `:Gist -c u1y4o34o234134` - open gist
+* `:Gist -d` delete current opened gist
 
 ## Temporary files
 
