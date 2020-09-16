@@ -71,9 +71,24 @@ There was implemented snippets usage mechanism. Snippets let you code more faste
 
 Please read UltiSnips plugin documentation [here](https://github.com/SirVer/ultisnips). 
 
+## Gists
+
+When we use snippets - all cool. But sometimes we need to share code with some one. How we can do it faster? We can use git gists.
+
+Also we can extract presaved configs same way.
+
+:Gist -s comment - publish gist
+:Gist -l - get gists list
+:Gist -c u1y4o34o234134 - open gist
+:Gist -d delete current opened gist
+
 ## Temporary files
 
 As you know, when we edit files, Vim create a temporary copy of the file with `.swap` extension. To prevent of saving such files in the project director I create two directories under `.vim` named as `swap` and `backup`. SO. If you looking for `.swap` file - you should look here.
+
+## Help and methods folding
+
+I think, if you are familiar with VIM, there is no sense to present help on `F1` button. That's why I rebind it to file methods folding. In some cases it can be useful so test it.
 
 ## Font
 

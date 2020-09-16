@@ -33,13 +33,13 @@ colorscheme cobalt2
 "---------------------------
 call plug#begin(plugins_directory)
     Plug 'Chiel92/vim-autoformat' " spaces/braces etc. (ESlint/gofmt)
-"   Plug 'Raimondi/delimitMate' " auto-completion for quotes, parens, brackets, etc
     Plug 'alvan/vim-closetag' " close html tag, press >
     Plug 'Valloric/YouCompleteMe' " multilanguage autocomplete
+    Plug 'inkarkat/vim-mark' " classic plugin for Marks multicoloring
+    Plug 'mattn/gist-vim' " plugin for gist
 " Plug 'sheerun/vim-polyglot' "  language SYNTAX packs
 " Plug 'tpope/vim-fugitive' " Git wrapper
 " Plug 'airblade/vim-gitgutter' " Git diff
-" Plug 'mattn/gist-vim'
 " Plug 'honza/vim-snippets' " html C etc...
 " Plug 'epilande/vim-es2015-snippets' " es6
 " Plug 'epilande/vim-react-snippets' " react
@@ -55,26 +55,11 @@ call plug#begin(plugins_directory)
     Plug 'dense-analysis/ale' " + linter
 
 " Ultisnips better be last plugin
-" Plug 'SirVer/ultisnips'
+    Plug 'SirVer/ultisnips'
 call plug#end()
 filetype plugin indent on " Required!
 
-"> snippets
-let g:UltiSnipsUsePythonVersion=2
-let g:UltiSnipsSnippetsDir=VIM_DIR.'UltiSnips'
-let g:ycm_key_list_select_completion=['<c-j>', '<Down>']
-let g:UltiSnipsExpandTrigger='<tab>'
-let g:UltiSnipsJumpForwardTrigger='<c-b>'
-let g:UltiSnipsJumpBackwardTrigger='<c-z>'
-let g:UltiSnipsEditSplit='vertical'
-
-"> Git Gist
-" let g:gist_post_private = 0
-" let g:gist_post_anonymous = 0
-" let g:gist_detect_filetype = 1
-" let g:gist_open_browser_after_post = 0
-"  Main settings
-
+"> Main settings
 "---------------------------
 set number " line numbers
 set relativenumber " to display relative line numbers
@@ -95,21 +80,30 @@ set shell=/bin/bash " Open bash
 set updatetime=100 " redraw the status bar often
 set title " let vim set the terminal title
 
-"put .swp and ~ files under ~/.vim
+" Put .swp and ~ files under ~/.vim
+"---------------------------
 set backupdir=$HOME/.vim/backup
 set directory=$HOME/.vim/swap
 
-"> additional syntax
-autocmd BufEnter,BufRead *.vue set filetype=vue.javascript " VueJS supporting
-j
-
-" Files navigation
+" Additional syntax
 "---------------------------
-let g:netrw_banner = 0
-let g:netrw_browse_split = 0
-let g:netrw_altv = 1
-let g:netrw_sort_sequence = '[\/]$,*' " sort
-map <C-w> :tabp<cr>
+autocmd BufEnter,BufRead *.vue set filetype=vue.javascript " VueJS supporting
+
+" Rebinding F1 for folding
+"---------------------------
+set foldmethod=indent
+set foldlevel=99
+let g:FoldMethod = 0
+map <F1> :call ToggleFold()<cr>
+fun! ToggleFold()
+    if g:FoldMethod == 0
+        exe "normal! zM"
+        let g:FoldMethod = 1
+    else
+        exe "normal! zR"
+        let g:FoldMethod = 0
+    endif
+endfun
 
 " Plugins settings in files
 "---------------------------
@@ -118,3 +112,5 @@ source $HOME/.vim/settings/.linting.vim " eslint
 source $HOME/.vim/settings/.close-tags.vim " close html tags settings
 source $HOME/.vim/settings/.tabs.vim " tabs size
 source $HOME/.vim/settings/.ycm.vim " autocomplete for js
+source $HOME/.vim/settings/.gist.vim " settings for gist
+source $HOME/.vim/settings/.snips.vim " settings for ultisnip
