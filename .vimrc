@@ -38,13 +38,10 @@ call plug#begin(plugins_directory)
     Plug 'inkarkat/vim-ingo-library' " needed for Marks plugin
     Plug 'inkarkat/vim-mark' " classic plugin for Marks multicoloring
     Plug 'mattn/gist-vim' " plugin for gist
-" Plug 'sheerun/vim-polyglot' "  language SYNTAX packs
+    Plug 'tpope/vim-commentary' " commentary for vim
+    Plug 'preservim/nerdtree'
 " Plug 'tpope/vim-fugitive' " Git wrapper
 " Plug 'airblade/vim-gitgutter' " Git diff
-" Plug 'honza/vim-snippets' " html C etc...
-" Plug 'epilande/vim-es2015-snippets' " es6
-" Plug 'epilande/vim-react-snippets' " react
-" Plug 'alexbyk/vim-ultisnips-js-testing' " mocha/jasmine
 
 " javascript plugins
     Plug 'galooshi/vim-import-js' " JS imports autocomplation
@@ -90,13 +87,18 @@ set directory=$HOME/.vim/swap
 "---------------------------
 autocmd BufEnter,BufRead *.vue set filetype=vue.javascript " VueJS supporting
 
-" Rebinding F1 for folding
+" Keys rebinding
 "---------------------------
+map <F1> :call ToggleFold()<cr>
+map <C-b> :NERDTreeToggle<cr>
+
+" Additional settings
+"---------------------------
+"> folding
+fun! ToggleFold()
 set foldmethod=indent
 set foldlevel=99
 let g:FoldMethod = 0
-map <F1> :call ToggleFold()<cr>
-fun! ToggleFold()
     if g:FoldMethod == 0
         exe "normal! zM"
         let g:FoldMethod = 1
@@ -115,3 +117,5 @@ source $HOME/.vim/settings/.tabs.vim " tabs size
 source $HOME/.vim/settings/.ycm.vim " autocomplete for js
 source $HOME/.vim/settings/.gist.vim " settings for gist
 source $HOME/.vim/settings/.snips.vim " settings for ultisnip
+source $HOME/.vim/settings/.commentary.vim " settings commentary templates
+source $HOME/.vim/settings/.nerd.vim " NERDtree colors and settings

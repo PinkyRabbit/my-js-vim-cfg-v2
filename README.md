@@ -37,6 +37,8 @@ sudo ln -s ~/.vim/.vimrc .vimrc
 vim ~/.vim/.vimrc
 ```
 
+Now you can open your project by `vim .` in project root folder.
+
 ## Linting
 
 For correct binding eslint with vim I use Ale plugin. It is awesome powerful plugin for any linter.
@@ -76,9 +78,19 @@ Also we can extract presaved configs same way.
 * `:Gist -c u1y4o34o234134` - open gist
 * `:Gist -d` delete current opened gist
 
+## Navigation
+
+To work with the buffers fine enough to use Sex/Vex. But if we want to have full project view we should use more strong tool [NERDTree](https://github.com/preservim/nerdtree). It similar like file trees in other editors. Just open Vim in project root directory by commant `vim .`. Files tree can be easy hidden by `Ctrl-b`.
+
+You can set up any colors by file extensions. Just edit NERDTree config in `settings/.nerd.vim`.
+
 ## Marks
 
 For more fast navigation though file I use Mark plugin. It's totally easy to use it `\m` to mark any item and next you can search by mark number. You can read a plugin documentation [here](https://github.com/inkarkat/vim-mark)
+
+# Comments
+
+With a perfect plugin [vim-commentary](https://github.com/tpope/vim-commentary). Just `gc` to make a comment
 
 ## Temporary files
 
