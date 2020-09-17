@@ -82,7 +82,7 @@ Also we can extract presaved configs same way.
 
 To work with the buffers fine enough to use Sex/Vex. But if we want to have full project view we should use more strong tool [NERDTree](https://github.com/preservim/nerdtree). It similar like file trees in other editors. Just open Vim in project root directory by commant `vim .`. Files tree can be easy hidden by `Ctrl-b`.
 
-You can set up any colors by file extensions. Just edit NERDTree config in `settings/.nerd.vim`.
+You can set up any colors by file extensions or names. Just edit NERDTree config in `settings/.nerd.vim`. Full guide [is here](https://github.com/tiagofumo/vim-nerdtree-syntax-highlight)
 
 ## Marks
 
@@ -102,7 +102,9 @@ As you know, when we edit files, Vim create a temporary copy of the file with `.
 
 ## Font
 
-To edit font and font size you should set up it inside Konsole settings
+To edit font and font size you should set up it inside Konsole settings. For correct NERDTree working you should install [Nerd compatible font](https://github.com/ryanoasis/vim-devicons#installation) and next [set it inside vimrc](https://github.com/ryanoasis/vim-devicons/wiki/Installation#set-font). By default I use `Noto` font and it easy can be install from [AUR repo](https://aur.archlinux.org/packages/nerd-fonts-noto/). But if you won't use `Noto` - you should install one other [follow on of instructions](https://github.com/ryanoasis/nerd-fonts).
+
+ps. don't forget to reboot pc after new font was installed
 
 ## Themes
 

@@ -39,9 +39,6 @@ call plug#begin(plugins_directory)
     Plug 'inkarkat/vim-mark' " classic plugin for Marks multicoloring
     Plug 'mattn/gist-vim' " plugin for gist
     Plug 'tpope/vim-commentary' " commentary for vim
-    Plug 'preservim/nerdtree'
-" Plug 'tpope/vim-fugitive' " Git wrapper
-" Plug 'airblade/vim-gitgutter' " Git diff
 
 " javascript plugins
     Plug 'galooshi/vim-import-js' " JS imports autocomplation
@@ -52,8 +49,14 @@ call plug#begin(plugins_directory)
     Plug 'vim-airline/vim-airline-themes'
     Plug 'dense-analysis/ale' " + linter
 
-" Ultisnips better be last plugin
+" nerdtree
+    Plug 'preservim/nerdtree'
+    Plug 'ryanoasis/vim-devicons'
+    Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+
+" Better load in the end
     Plug 'SirVer/ultisnips'
+    Plug 'ryanoasis/vim-devicons'
 call plug#end()
 filetype plugin indent on " Required!
 
@@ -74,6 +77,7 @@ set list " Show trailing whitespace
 let g:loaded_matchparen=0 " disable auto highlighting of matched parentheses
 set listchars=tab:▸\ ,trail:▫ " Display tabs an invisible characters
 set encoding=UTF-8 " Save with utf8 encoding
+set guifont=NotoMono\ Nerd\ Font\ Mono\ 11 " Font for Nerd icons
 set shell=/bin/bash " Open bash
 set updatetime=100 " redraw the status bar often
 set title " let vim set the terminal title
