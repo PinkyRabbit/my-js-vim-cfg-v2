@@ -84,6 +84,8 @@ To work with the buffers fine enough to use Sex/Vex. But if we want to have full
 
 You can set up any colors by file extensions or names. Just edit NERDTree config in `settings/.nerd.vim`. Full guide [is here](https://github.com/tiagofumo/vim-nerdtree-syntax-highlight)
 
+Also if you need more with of NERDTree edit `NERDTreeWinSize` option.
+
 ## Marks
 
 For more fast navigation though file I use Mark plugin. It's totally easy to use it `\m` to mark any item and next you can search by mark number. You can read a plugin documentation [here](https://github.com/inkarkat/vim-mark)
